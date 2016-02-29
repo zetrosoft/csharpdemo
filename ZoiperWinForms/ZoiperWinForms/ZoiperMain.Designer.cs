@@ -46,16 +46,23 @@
             this.cbTransportType = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.grpBAccountState = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbIsRegistered = new System.Windows.Forms.TextBox();
-            this.lbActiveCalls = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.lbActiveCalls = new System.Windows.Forms.ListBox();
+            this.tbIsRegistered = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbCertUserName = new System.Windows.Forms.TextBox();
+            this.tbCertPassword = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.grpBActication = new System.Windows.Forms.GroupBox();
+            this.btnCertActivate = new System.Windows.Forms.Button();
             this.grpBAccountState.SuspendLayout();
+            this.grpBActication.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddUser
             // 
-            this.btnAddUser.Location = new System.Drawing.Point(182, 117);
+            this.btnAddUser.Location = new System.Drawing.Point(182, 223);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(75, 23);
             this.btnAddUser.TabIndex = 0;
@@ -65,32 +72,29 @@
             // 
             // tbUserName
             // 
-            this.tbUserName.Location = new System.Drawing.Point(81, 12);
+            this.tbUserName.Location = new System.Drawing.Point(81, 118);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(176, 20);
             this.tbUserName.TabIndex = 1;
-            this.tbUserName.Text = "atanas";
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(81, 38);
+            this.tbPassword.Location = new System.Drawing.Point(81, 144);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(176, 20);
             this.tbPassword.TabIndex = 2;
-            this.tbPassword.Text = "mnbv";
             // 
             // tbServer
             // 
-            this.tbServer.Location = new System.Drawing.Point(81, 64);
+            this.tbServer.Location = new System.Drawing.Point(81, 170);
             this.tbServer.Name = "tbServer";
             this.tbServer.Size = new System.Drawing.Size(176, 20);
             this.tbServer.TabIndex = 3;
-            this.tbServer.Text = "sip3.zoiper.com";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(12, 121);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 4;
@@ -99,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 41);
+            this.label2.Location = new System.Drawing.Point(12, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 5;
@@ -108,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 67);
+            this.label3.Location = new System.Drawing.Point(12, 173);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 6;
@@ -117,7 +121,7 @@
             // lbUsers
             // 
             this.lbUsers.FormattingEnabled = true;
-            this.lbUsers.Location = new System.Drawing.Point(287, 25);
+            this.lbUsers.Location = new System.Drawing.Point(266, 137);
             this.lbUsers.Name = "lbUsers";
             this.lbUsers.Size = new System.Drawing.Size(242, 108);
             this.lbUsers.TabIndex = 7;
@@ -126,7 +130,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(284, 9);
+            this.label4.Location = new System.Drawing.Point(263, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 8;
@@ -196,7 +200,7 @@
             this.cbTransportType.Items.AddRange(new object[] {
             "UDP",
             "TCP"});
-            this.cbTransportType.Location = new System.Drawing.Point(81, 90);
+            this.cbTransportType.Location = new System.Drawing.Point(81, 196);
             this.cbTransportType.Name = "cbTransportType";
             this.cbTransportType.Size = new System.Drawing.Size(176, 21);
             this.cbTransportType.TabIndex = 15;
@@ -204,7 +208,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 93);
+            this.label6.Location = new System.Drawing.Point(12, 199);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 13);
             this.label6.TabIndex = 16;
@@ -232,31 +236,6 @@
             this.grpBAccountState.TabStop = false;
             this.grpBAccountState.Text = "VoIP User";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Is Registered:";
-            // 
-            // tbIsRegistered
-            // 
-            this.tbIsRegistered.Location = new System.Drawing.Point(84, 21);
-            this.tbIsRegistered.Name = "tbIsRegistered";
-            this.tbIsRegistered.ReadOnly = true;
-            this.tbIsRegistered.Size = new System.Drawing.Size(56, 20);
-            this.tbIsRegistered.TabIndex = 15;
-            // 
-            // lbActiveCalls
-            // 
-            this.lbActiveCalls.FormattingEnabled = true;
-            this.lbActiveCalls.Location = new System.Drawing.Point(84, 77);
-            this.lbActiveCalls.Name = "lbActiveCalls";
-            this.lbActiveCalls.Size = new System.Drawing.Size(218, 108);
-            this.lbActiveCalls.TabIndex = 18;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -266,11 +245,93 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Active Calls:";
             // 
+            // lbActiveCalls
+            // 
+            this.lbActiveCalls.FormattingEnabled = true;
+            this.lbActiveCalls.Location = new System.Drawing.Point(84, 77);
+            this.lbActiveCalls.Name = "lbActiveCalls";
+            this.lbActiveCalls.Size = new System.Drawing.Size(218, 108);
+            this.lbActiveCalls.TabIndex = 18;
+            // 
+            // tbIsRegistered
+            // 
+            this.tbIsRegistered.Location = new System.Drawing.Point(84, 21);
+            this.tbIsRegistered.Name = "tbIsRegistered";
+            this.tbIsRegistered.ReadOnly = true;
+            this.tbIsRegistered.Size = new System.Drawing.Size(56, 20);
+            this.tbIsRegistered.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Is Registered:";
+            // 
+            // tbCertUserName
+            // 
+            this.tbCertUserName.Location = new System.Drawing.Point(75, 19);
+            this.tbCertUserName.Name = "tbCertUserName";
+            this.tbCertUserName.Size = new System.Drawing.Size(104, 20);
+            this.tbCertUserName.TabIndex = 18;
+            // 
+            // tbCertPassword
+            // 
+            this.tbCertPassword.Location = new System.Drawing.Point(75, 45);
+            this.tbCertPassword.Name = "tbCertPassword";
+            this.tbCertPassword.Size = new System.Drawing.Size(104, 20);
+            this.tbCertPassword.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "User Name:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Password:";
+            // 
+            // grpBActication
+            // 
+            this.grpBActication.Controls.Add(this.btnCertActivate);
+            this.grpBActication.Controls.Add(this.label8);
+            this.grpBActication.Controls.Add(this.label9);
+            this.grpBActication.Controls.Add(this.tbCertUserName);
+            this.grpBActication.Controls.Add(this.tbCertPassword);
+            this.grpBActication.Location = new System.Drawing.Point(12, 12);
+            this.grpBActication.Name = "grpBActication";
+            this.grpBActication.Size = new System.Drawing.Size(192, 100);
+            this.grpBActication.TabIndex = 22;
+            this.grpBActication.TabStop = false;
+            this.grpBActication.Text = "SDK Activation";
+            // 
+            // btnCertActivate
+            // 
+            this.btnCertActivate.Location = new System.Drawing.Point(104, 71);
+            this.btnCertActivate.Name = "btnCertActivate";
+            this.btnCertActivate.Size = new System.Drawing.Size(75, 23);
+            this.btnCertActivate.TabIndex = 23;
+            this.btnCertActivate.Text = "Activate";
+            this.btnCertActivate.UseVisualStyleBackColor = true;
+            this.btnCertActivate.Click += new System.EventHandler(this.btnCertActivate_Click);
+            // 
             // ZoiperMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 611);
+            this.Controls.Add(this.grpBActication);
             this.Controls.Add(this.grpBAccountState);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbTransportType);
@@ -288,6 +349,8 @@
             this.Text = "Zoiper SDK";
             this.grpBAccountState.ResumeLayout(false);
             this.grpBAccountState.PerformLayout();
+            this.grpBActication.ResumeLayout(false);
+            this.grpBActication.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,6 +380,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox lbActiveCalls;
+        private System.Windows.Forms.TextBox tbCertUserName;
+        private System.Windows.Forms.TextBox tbCertPassword;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox grpBActication;
+        private System.Windows.Forms.Button btnCertActivate;
     }
 }
 

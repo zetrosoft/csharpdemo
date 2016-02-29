@@ -24,9 +24,7 @@ namespace ZoiperWinForms
             eventLog = new ZoiperManager.ZoiperEvent(LogZoiperEvent);
 
             voip.OnZoiperEvent += eventLog;
-            voip.Initialize();
         }
-
         private void LogZoiperEvent(String eventText)
         {
             if (rtbRunLog.InvokeRequired)
@@ -89,7 +87,7 @@ namespace ZoiperWinForms
             if (grpBAccountState.Enabled)
             {
                 tbIsRegistered.Text = voipUser.IsRegistered.ToString();
-                foreach(var call in voipUser.ActiveCalls)
+                foreach(var call in voipUser.ActiveCalls.Values)
                 {
                     lbActiveCalls.Items.Add(call);
                 }
@@ -103,6 +101,12 @@ namespace ZoiperWinForms
         private void lbUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             AccountInfoRefresh(lbUsers.SelectedItem as ZoiperManager.VoIPUser);
+        }
+
+        private void btnCertActivate_Click(object sender, EventArgs e)
+        {
+            grpBActication.Enabled = false;
+            voip.Initialize(tbCertUserName.Text, tbCertPassword.Text);
         }
     }
 }

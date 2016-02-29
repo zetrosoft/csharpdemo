@@ -34,8 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CliWrapper">
-      <HintPath>..\..\..\cliwrapper\CliWrapper\Debug\CliWrapper.dll</HintPath>
+    <Reference Include="CliWrapper, Version=1.0.5900.28786, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\CliWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

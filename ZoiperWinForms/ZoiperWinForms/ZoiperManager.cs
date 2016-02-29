@@ -58,12 +58,11 @@ namespace ZoiperWinForms
             }
         }
 
-
         public class VoIPUser
         {
             public VoIPUser()
             {
-                ActiveCalls = new List<VoIPCall>();
+                ActiveCalls = new Dictionary<uint, VoIPCall>();
             }
 
             public CliWrapper.CliWrapper VoIPProvider
@@ -108,10 +107,20 @@ namespace ZoiperWinForms
             public bool MakeCall(String callee)
             {
                 uint callId = 0;
-                return VoIPProvider.CallCreate(UserId, callee, ref callId) == 0;
+                if(VoIPProvider.CallCreate(UserId, callee, ref callId) == 0)
+                {
+                    ActiveCalls[callId] = new VoIPCall
+                                            {
+                                                CallId = callId
+                                            };
+
+                    return true;
+                }
+
+                return false;
             }
 
-            public List<VoIPCall> ActiveCalls
+            public Dictionary<uint, VoIPCall> ActiveCalls
             {
                 get;
                 set;
@@ -120,7 +129,7 @@ namespace ZoiperWinForms
 
         public Dictionary<uint, VoIPUser> ActiveUsers = new Dictionary<uint, VoIPUser>();
 
-        public bool Initialize()
+        public bool Initialize(String certUserName, String certPassword)
         {
             zoiper = CliWrapper.CliWrapper.GetWrapperInstance();
             Random rand = new Random(DateTime.Now.Millisecond);
@@ -131,6 +140,10 @@ namespace ZoiperWinForms
                 zoiper.OnUserRegistered += Zoiper_OnUserRegistered;
                 zoiper.OnUserRegistrationFailure += Zoiper_OnUserRegistrationFailure;
                 zoiper.OnCallCreated += Zoiper_OnCallCreated;
+                zoiper.OnCallAccepted += Zoiper_OnCallAccepted;
+                zoiper.OnActivationCompleted += Zoiper_OnActivationCompleted;
+
+                result = zoiper.StartActivationSDK(null, "atanas.andreev", "-CSAT4", null);
 
                 Thread eventPoller = new Thread(new ThreadStart(
                     () =>
@@ -148,17 +161,28 @@ namespace ZoiperWinForms
             return result == 0;
         }
 
+        private void Zoiper_OnActivationCompleted(CliWrapper.CliWrapper.Cli_eActivationStatus cli_status, string cliString_reason, string cliString_certificate, string cliString_build, string cliString_hddSerial, string cliString_mac, string cliString_checksum)
+        {
+            if (OnZoiperEvent != null)
+                OnZoiperEvent("OnActivationCompleted Status: " + cli_status + " Certificate:" + cliString_certificate);
+        }
+
+        private void Zoiper_OnCallAccepted(uint CallId, CliWrapper.CliWrapper.Cli_CodecEnum cli_codec, CliWrapper.CliWrapper.Cli_eCallDirection cli_dir)
+        {
+            if (OnZoiperEvent != null)
+                OnZoiperEvent("OnCallAccepted CallId: " + CallId + " cli_codec:" + cli_codec + " cli_dir:" + cli_dir);
+        }
+
         private void Zoiper_OnCallCreated(uint UserId, uint CallId, string cliString_pPeer, string cliString_pPeerNumber, string cliString_pPeerURI, string cliString_pDNID, int autoAnswerSeconds)
         {
-            ActiveUsers[UserId].ActiveCalls.Add(new VoIPCall
+            if(ActiveUsers[UserId].ActiveCalls.Keys.Contains(CallId))
             {
-                CallId = CallId,
-                cliString_pPeer = cliString_pPeer,
-                cliString_pPeerNumber = cliString_pPeerNumber,
-                cliString_pPeerURI = cliString_pPeerURI,
-                cliString_pDNID = cliString_pDNID,
-                autoAnswerSeconds = autoAnswerSeconds
-            });
+                ActiveUsers[UserId].ActiveCalls[CallId].cliString_pPeer = cliString_pPeer;
+                ActiveUsers[UserId].ActiveCalls[CallId].cliString_pPeerNumber = cliString_pPeerNumber;
+                ActiveUsers[UserId].ActiveCalls[CallId].cliString_pPeerURI = cliString_pPeerURI;
+                ActiveUsers[UserId].ActiveCalls[CallId].cliString_pDNID = cliString_pDNID;
+                ActiveUsers[UserId].ActiveCalls[CallId].autoAnswerSeconds = autoAnswerSeconds;
+            }
 
             if (OnZoiperEvent != null)
                 OnZoiperEvent(ActiveUsers[UserId].UserName + " OnCallCreated cliString_pPeer: " + cliString_pPeer + " cliString_pPeerNumber:" + cliString_pPeerNumber + " cliString_pPeerURI:" + cliString_pPeerURI + " cliString_pDNID:" + cliString_pDNID + " autoAnswerSeconds:" + autoAnswerSeconds);
