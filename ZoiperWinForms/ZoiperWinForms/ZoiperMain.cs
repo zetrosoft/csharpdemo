@@ -14,6 +14,8 @@ namespace ZoiperWinForms
     {
         ZoiperManager voip = new ZoiperManager();
         ZoiperManager.ZoiperEvent eventLog = null;
+        ZoiperManager.PendingCall incCall = null;
+        ZoiperManager.PendingCall outCall = null;
 
         public ZoiperMain()
         {
@@ -22,9 +24,13 @@ namespace ZoiperWinForms
             cbTransportType.SelectedIndex = 0;
 
             eventLog = new ZoiperManager.ZoiperEvent(LogZoiperEvent);
+            incCall = new ZoiperManager.PendingCall(IncomingCall);
+            outCall = new ZoiperManager.PendingCall(OutgoingCall);
 
             voip.OnZoiperEvent += eventLog;
+            voip.OnIncomingCall += incCall;
         }
+
         private void LogZoiperEvent(String eventText)
         {
             if (rtbRunLog.InvokeRequired)
@@ -34,6 +40,29 @@ namespace ZoiperWinForms
                 rtbRunLog.Text += eventText + "\n";
                 AccountInfoRefresh(lbUsers.SelectedItem as ZoiperManager.VoIPUser);
             }
+        }
+
+        private void IncomingCall(ZoiperManager.VoIPCall call)
+        {
+            if (rtbRunLog.InvokeRequired)
+                BeginInvoke(incCall, call);
+            else
+            {
+                ActiveCallsListRefresh();
+
+                if (MessageBox.Show(call.cliString_pPeer + " (" + call.cliString_pPeerNumber + ")", "Incoming call", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    call.AcceptCall();
+                else
+                    call.RejectCall();
+            }
+        }
+
+        private void OutgoingCall(ZoiperManager.VoIPCall call)
+        {
+            if (rtbRunLog.InvokeRequired)
+                BeginInvoke(outCall, call);
+            else
+                ActiveCallsListRefresh();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -82,19 +111,25 @@ namespace ZoiperWinForms
 
         private void AccountInfoRefresh(ZoiperManager.VoIPUser voipUser)
         {
-            lbActiveCalls.Items.Clear();
             grpBAccountState.Enabled = (voipUser != null);
             if (grpBAccountState.Enabled)
             {
                 tbIsRegistered.Text = voipUser.IsRegistered.ToString();
-                foreach(var call in voipUser.ActiveCalls.Values)
-                {
-                    lbActiveCalls.Items.Add(call);
-                }
             }
             else
             {
                 tbIsRegistered.Text = "";
+            }
+        }
+
+        private void ActiveCallsListRefresh()
+        {
+            lbActiveCalls.Items.Clear();
+            grpBActiveCalls.Enabled = (voip.AllActiveCalls.Count > 0);
+            if(grpBActiveCalls.Enabled)
+            {
+                foreach (var call in voip.AllActiveCalls.Values)
+                    lbActiveCalls.Items.Add(call);
             }
         }
 
@@ -107,6 +142,15 @@ namespace ZoiperWinForms
         {
             grpBActication.Enabled = false;
             voip.Initialize(tbCertUserName.Text, tbCertPassword.Text);
+        }
+
+        private void btnCloseCall_Click(object sender, EventArgs e)
+        {
+            if(lbActiveCalls.SelectedItem != null)
+            {
+                var call = lbActiveCalls.SelectedItem as ZoiperManager.VoIPCall;
+                call.RejectCall();
+            }
         }
     }
 }

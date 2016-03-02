@@ -36,7 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbUsers = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnUnregister = new System.Windows.Forms.Button();
             this.btnCreateCall = new System.Windows.Forms.Button();
@@ -46,7 +45,6 @@
             this.cbTransportType = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.grpBAccountState = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.lbActiveCalls = new System.Windows.Forms.ListBox();
             this.tbIsRegistered = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,8 +54,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.grpBActication = new System.Windows.Forms.GroupBox();
             this.btnCertActivate = new System.Windows.Forms.Button();
+            this.grpBActiveCalls = new System.Windows.Forms.GroupBox();
+            this.btnCloseCall = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpBAccountState.SuspendLayout();
             this.grpBActication.SuspendLayout();
+            this.grpBActiveCalls.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddUser
@@ -76,6 +79,7 @@
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(176, 20);
             this.tbUserName.TabIndex = 1;
+            this.tbUserName.Text = "atanas";
             // 
             // tbPassword
             // 
@@ -83,6 +87,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(176, 20);
             this.tbPassword.TabIndex = 2;
+            this.tbPassword.Text = "mnbv";
             // 
             // tbServer
             // 
@@ -90,6 +95,7 @@
             this.tbServer.Name = "tbServer";
             this.tbServer.Size = new System.Drawing.Size(176, 20);
             this.tbServer.TabIndex = 3;
+            this.tbServer.Text = "sip3.zoiper.com";
             // 
             // label1
             // 
@@ -121,24 +127,15 @@
             // lbUsers
             // 
             this.lbUsers.FormattingEnabled = true;
-            this.lbUsers.Location = new System.Drawing.Point(266, 137);
+            this.lbUsers.Location = new System.Drawing.Point(6, 19);
             this.lbUsers.Name = "lbUsers";
-            this.lbUsers.Size = new System.Drawing.Size(242, 108);
+            this.lbUsers.Size = new System.Drawing.Size(254, 82);
             this.lbUsers.TabIndex = 7;
             this.lbUsers.SelectedIndexChanged += new System.EventHandler(this.lbUsers_SelectedIndexChanged);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(263, 121);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "VoIP Users List:";
-            // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(146, 19);
+            this.btnRegister.Location = new System.Drawing.Point(9, 47);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 9;
@@ -148,7 +145,7 @@
             // 
             // btnUnregister
             // 
-            this.btnUnregister.Location = new System.Drawing.Point(227, 19);
+            this.btnUnregister.Location = new System.Drawing.Point(90, 47);
             this.btnUnregister.Name = "btnUnregister";
             this.btnUnregister.Size = new System.Drawing.Size(75, 23);
             this.btnUnregister.TabIndex = 10;
@@ -158,7 +155,7 @@
             // 
             // btnCreateCall
             // 
-            this.btnCreateCall.Location = new System.Drawing.Point(227, 48);
+            this.btnCreateCall.Location = new System.Drawing.Point(173, 74);
             this.btnCreateCall.Name = "btnCreateCall";
             this.btnCreateCall.Size = new System.Drawing.Size(75, 23);
             this.btnCreateCall.TabIndex = 11;
@@ -169,7 +166,7 @@
             // lblCallee
             // 
             this.lblCallee.AutoSize = true;
-            this.lblCallee.Location = new System.Drawing.Point(6, 53);
+            this.lblCallee.Location = new System.Drawing.Point(6, 79);
             this.lblCallee.Name = "lblCallee";
             this.lblCallee.Size = new System.Drawing.Size(39, 13);
             this.lblCallee.TabIndex = 12;
@@ -177,9 +174,9 @@
             // 
             // tbCallee
             // 
-            this.tbCallee.Location = new System.Drawing.Point(84, 50);
+            this.tbCallee.Location = new System.Drawing.Point(88, 76);
             this.tbCallee.Name = "tbCallee";
-            this.tbCallee.Size = new System.Drawing.Size(137, 20);
+            this.tbCallee.Size = new System.Drawing.Size(77, 20);
             this.tbCallee.TabIndex = 13;
             // 
             // rtbRunLog
@@ -188,9 +185,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbRunLog.Enabled = false;
-            this.rtbRunLog.Location = new System.Drawing.Point(12, 305);
+            this.rtbRunLog.Location = new System.Drawing.Point(12, 252);
             this.rtbRunLog.Name = "rtbRunLog";
-            this.rtbRunLog.Size = new System.Drawing.Size(866, 294);
+            this.rtbRunLog.Size = new System.Drawing.Size(866, 347);
             this.rtbRunLog.TabIndex = 14;
             this.rtbRunLog.Text = "";
             // 
@@ -219,8 +216,6 @@
             this.grpBAccountState.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBAccountState.Controls.Add(this.label7);
-            this.grpBAccountState.Controls.Add(this.lbActiveCalls);
             this.grpBAccountState.Controls.Add(this.tbIsRegistered);
             this.grpBAccountState.Controls.Add(this.label5);
             this.grpBAccountState.Controls.Add(this.tbCallee);
@@ -229,28 +224,19 @@
             this.grpBAccountState.Controls.Add(this.lblCallee);
             this.grpBAccountState.Controls.Add(this.btnRegister);
             this.grpBAccountState.Enabled = false;
-            this.grpBAccountState.Location = new System.Drawing.Point(535, 12);
+            this.grpBAccountState.Location = new System.Drawing.Point(6, 107);
             this.grpBAccountState.Name = "grpBAccountState";
-            this.grpBAccountState.Size = new System.Drawing.Size(343, 287);
+            this.grpBAccountState.Size = new System.Drawing.Size(254, 121);
             this.grpBAccountState.TabIndex = 17;
             this.grpBAccountState.TabStop = false;
             this.grpBAccountState.Text = "VoIP User";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Active Calls:";
-            // 
             // lbActiveCalls
             // 
             this.lbActiveCalls.FormattingEnabled = true;
-            this.lbActiveCalls.Location = new System.Drawing.Point(84, 77);
+            this.lbActiveCalls.Location = new System.Drawing.Point(9, 19);
             this.lbActiveCalls.Name = "lbActiveCalls";
-            this.lbActiveCalls.Size = new System.Drawing.Size(218, 108);
+            this.lbActiveCalls.Size = new System.Drawing.Size(212, 95);
             this.lbActiveCalls.TabIndex = 18;
             // 
             // tbIsRegistered
@@ -258,7 +244,7 @@
             this.tbIsRegistered.Location = new System.Drawing.Point(84, 21);
             this.tbIsRegistered.Name = "tbIsRegistered";
             this.tbIsRegistered.ReadOnly = true;
-            this.tbIsRegistered.Size = new System.Drawing.Size(56, 20);
+            this.tbIsRegistered.Size = new System.Drawing.Size(81, 20);
             this.tbIsRegistered.TabIndex = 15;
             // 
             // label5
@@ -276,6 +262,7 @@
             this.tbCertUserName.Name = "tbCertUserName";
             this.tbCertUserName.Size = new System.Drawing.Size(104, 20);
             this.tbCertUserName.TabIndex = 18;
+            this.tbCertUserName.Text = "atanas.andreev";
             // 
             // tbCertPassword
             // 
@@ -283,6 +270,7 @@
             this.tbCertPassword.Name = "tbCertPassword";
             this.tbCertPassword.Size = new System.Drawing.Size(104, 20);
             this.tbCertPassword.TabIndex = 19;
+            this.tbCertPassword.Text = "-CSAT4";
             // 
             // label8
             // 
@@ -326,18 +314,49 @@
             this.btnCertActivate.UseVisualStyleBackColor = true;
             this.btnCertActivate.Click += new System.EventHandler(this.btnCertActivate_Click);
             // 
+            // grpBActiveCalls
+            // 
+            this.grpBActiveCalls.Controls.Add(this.btnCloseCall);
+            this.grpBActiveCalls.Controls.Add(this.lbActiveCalls);
+            this.grpBActiveCalls.Location = new System.Drawing.Point(535, 12);
+            this.grpBActiveCalls.Name = "grpBActiveCalls";
+            this.grpBActiveCalls.Size = new System.Drawing.Size(343, 128);
+            this.grpBActiveCalls.TabIndex = 23;
+            this.grpBActiveCalls.TabStop = false;
+            this.grpBActiveCalls.Text = "Active Calls";
+            // 
+            // btnCloseCall
+            // 
+            this.btnCloseCall.Location = new System.Drawing.Point(227, 19);
+            this.btnCloseCall.Name = "btnCloseCall";
+            this.btnCloseCall.Size = new System.Drawing.Size(75, 23);
+            this.btnCloseCall.TabIndex = 16;
+            this.btnCloseCall.Text = "Close Call";
+            this.btnCloseCall.UseVisualStyleBackColor = true;
+            this.btnCloseCall.Click += new System.EventHandler(this.btnCloseCall_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lbUsers);
+            this.groupBox1.Controls.Add(this.grpBAccountState);
+            this.groupBox1.Location = new System.Drawing.Point(263, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(266, 234);
+            this.groupBox1.TabIndex = 24;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "VoIP Users";
+            // 
             // ZoiperMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 611);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpBActiveCalls);
             this.Controls.Add(this.grpBActication);
-            this.Controls.Add(this.grpBAccountState);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbTransportType);
             this.Controls.Add(this.rtbRunLog);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.lbUsers);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -351,6 +370,8 @@
             this.grpBAccountState.PerformLayout();
             this.grpBActication.ResumeLayout(false);
             this.grpBActication.PerformLayout();
+            this.grpBActiveCalls.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,7 +387,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lbUsers;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnUnregister;
         private System.Windows.Forms.Button btnCreateCall;
@@ -378,7 +398,6 @@
         private System.Windows.Forms.GroupBox grpBAccountState;
         private System.Windows.Forms.TextBox tbIsRegistered;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox lbActiveCalls;
         private System.Windows.Forms.TextBox tbCertUserName;
         private System.Windows.Forms.TextBox tbCertPassword;
@@ -386,6 +405,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox grpBActication;
         private System.Windows.Forms.Button btnCertActivate;
+        private System.Windows.Forms.GroupBox grpBActiveCalls;
+        private System.Windows.Forms.Button btnCloseCall;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
